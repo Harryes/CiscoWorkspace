@@ -1,0 +1,625 @@
+
+!
+! Last configuration change at 12:20:17 UTC Mon Jan 13 2020 by aegisadmin
+!
+version 15.7
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname Aldershot301-Rtr
+!
+boot-start-marker
+boot system flash:/887-15-7-3-M5.bin
+boot-end-marker
+!
+aqm-register-fnf
+!
+enable secret 5 $1$vWSj$8A0XWZrMH4QqxL4SWpY/b.
+!
+aaa new-model
+!
+!
+aaa authentication login PRAESEPE-AD group radius local
+aaa authorization exec PRAESEPE-AD group radius local 
+!
+!
+!
+!
+!
+!
+aaa session-id common
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+ip dhcp excluded-address 192.168.2.50 192.168.2.55
+ip dhcp excluded-address 192.168.1.140
+ip dhcp excluded-address 192.168.1.110 192.168.1.115
+ip dhcp excluded-address 192.168.2.200
+ip dhcp excluded-address 10.135.43.240 10.135.43.249
+ip dhcp excluded-address 10.135.43.230 10.135.43.239
+ip dhcp excluded-address 10.135.43.30
+ip dhcp excluded-address 10.135.43.45
+ip dhcp excluded-address 192.168.1.108
+ip dhcp excluded-address 192.168.1.109
+ip dhcp excluded-address 192.168.1.220 192.168.1.221
+ip dhcp excluded-address 10.135.43.1 10.135.43.10
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+ip dhcp excluded-address 192.168.2.1 192.168.2.10
+ip dhcp excluded-address 192.168.3.1 192.168.3.10
+ip dhcp excluded-address 192.168.4.1 192.168.4.10
+ip dhcp excluded-address 192.168.5.1 192.168.5.10
+ip dhcp excluded-address 192.168.6.1 192.168.6.10
+ip dhcp excluded-address 192.168.7.1 192.168.7.10
+ip dhcp excluded-address 192.168.1.39 192.168.1.41
+!
+ip dhcp pool 10.135.43.x
+ network 10.135.43.0 255.255.255.0
+ default-router 10.135.43.1 
+ dns-server 10.135.43.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.1.x
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1 
+ dns-server 192.168.1.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.2.x
+ network 192.168.2.0 255.255.254.0
+ default-router 192.168.2.1 
+ dns-server 192.168.2.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.4.x
+ network 192.168.4.0 255.255.255.0
+ default-router 192.168.4.1 
+ dns-server 192.168.4.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.5.x
+ network 192.168.5.0 255.255.255.0
+ default-router 192.168.5.1 
+ dns-server 192.168.5.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.6.x
+ network 192.168.6.0 255.255.255.0
+ default-router 192.168.6.1 
+ dns-server 192.168.6.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool 192.168.7.x
+ network 192.168.7.0 255.255.255.0
+ default-router 192.168.7.1 
+ dns-server 192.168.7.1 
+ domain-name praesepe.local
+ lease 3
+!
+ip dhcp pool ALARM
+ host 192.168.1.5 255.255.255.0
+ hardware-address 001b.2900.713d
+ client-name ALARM
+ default-router 192.168.1.1 
+ dns-server 192.168.1.1 
+!
+!
+!
+ip domain name praesepe.local
+ip host ftp5.gwdg.de 134.76.12.6
+ip host qwerty 1.2.3.4
+ip host qwerty.praesepe.local 1.2.3.4
+ip host t2gst1uk 192.168.1.140
+ip host t2gst1uk.praesepe.local 192.168.1.140
+ip host newport1.astra-games.com 185.33.185.10
+ip host newport3.astra-games.com 185.33.185.14
+ip host mirror.centos.org 77.247.178.5
+ip host ftp.wrz.de 217.243.224.144
+ip host mars-sym.gauselmann.com 193.102.155.114
+ip host www.whatismyip.org 104.28.24.179
+ip name-server 8.8.8.8
+ip name-server 62.24.128.17
+ip name-server 62.24.128.18
+ip name-server 8.8.4.4
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+license udi pid C881-K9 sn FCZ194070HY
+!
+!
+object-group network ASTRA-EXT-HOSTS 
+ host 185.33.185.10
+ host 185.33.185.11
+ host 185.33.185.14
+ 185.33.185.8 255.255.255.248
+!
+object-group network BLUEPRINT-UPDATES 
+ host 104.17.54.91
+ host 104.17.53.91
+ host 104.17.56.91
+ host 104.17.52.91
+ host 104.17.55.91
+ 103.21.244.0 255.255.252.0
+ 103.22.200.0 255.255.252.0
+ 103.31.4.0 255.255.252.0
+ 104.16.0.0 255.240.0.0
+ 108.162.192.0 255.255.192.0
+ 131.0.72.0 255.255.252.0
+ 141.101.64.0 255.255.192.0
+ 162.158.0.0 255.254.0.0
+ 172.64.0.0 255.248.0.0
+ 173.245.48.0 255.255.240.0
+ 188.114.96.0 255.255.240.0
+ 190.93.240.0 255.255.240.0
+ 197.234.240.0 255.255.252.0
+ 198.41.128.0 255.255.128.0
+ host 162.13.185.35
+ host 104.16.46.84
+!
+object-group network GEWETE-HOSTS 
+ host 192.168.2.50
+ host 192.168.2.51
+ host 192.168.2.52
+ host 192.168.2.53
+ host 192.168.2.54
+!
+object-group network LEISURE-ELECTRONICS-HOSTS 
+ host 94.72.244.9
+ host 194.207.149.237
+!
+object-group network MARS-EXT-HOSTS 
+ host 134.76.12.6
+ host 212.69.166.138
+ host 77.247.178.5
+ host 217.243.224.144
+ host 193.102.155.114
+ host 193.102.155.112
+!
+object-group network PROJECT-EXT-HOSTS 
+ host 217.33.162.179
+ host 217.33.162.180
+ host 217.33.162.178
+!
+object-group network SG-VBET-HOSTS 
+ host 89.187.117.150
+ host 89.187.117.151
+ host 89.187.117.128
+ host 89.187.117.129
+ host 89.187.117.186
+ host 89.187.117.187
+ host 80.69.24.226
+ host 80.69.24.227
+!
+object-group network SG-VERACC-HOSTS 
+ host 213.123.62.118
+ host 213.123.62.119
+!
+object-group network SG-VERSRV-HOSTS 
+ host 213.219.8.12
+ host 213.219.8.13
+ host 213.219.8.14
+!
+object-group network TEST-WEB 
+ host 104.28.24.179
+ host 216.58.206.78
+ host 216.58.201.35
+ host 216.58.210.46
+ host 151.101.18.219
+!
+object-group network VENDOR-NETS 
+ 192.168.2.0 255.255.255.0
+ 192.168.4.0 255.255.255.0
+ 192.168.5.0 255.255.255.0
+ 192.168.6.0 255.255.255.0
+ 192.168.7.0 255.255.255.0
+!
+username admin privilege 15 secret 5 $1$w4IF$WPc6fChYcQG0qpi3ZyXug0
+!
+redundancy
+!
+!
+!
+!
+!
+! 
+!
+crypto isakmp policy 5
+ encr aes 256
+ hash sha512
+ authentication pre-share
+ group 5
+crypto isakmp key 4xYdf89QWe address 0.0.0.0        
+!
+!
+crypto ipsec transform-set SophosUTM esp-aes 256 esp-sha512-hmac 
+ mode tunnel
+!
+!
+!
+crypto map SophosUTM 5 ipsec-isakmp 
+ set peer 79.77.182.237
+ set transform-set SophosUTM 
+ set pfs group5
+ match address 101
+!
+!
+!
+!
+!
+!
+interface FastEthernet0
+ description Camera / Legacy Network
+ switchport access vlan 10
+ no ip address
+!
+interface FastEthernet1
+ description Gausselmann Network
+ switchport access vlan 11
+ no ip address
+!
+interface FastEthernet2
+ no ip address
+ shutdown
+!
+interface FastEthernet3
+ description Trunk for vendor separation
+ switchport trunk allowed vlan 1-7,1002-1005
+ switchport mode trunk
+ no ip address
+!
+interface FastEthernet4
+ description $ETH-LAN$$ETH-SW-LAUNCH$$INTF-INFO-GE 0/0$
+ no ip dhcp client request tftp-server-address
+ no ip address
+ ip access-group 101 in
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ ip flow ingress
+ ip nat outside
+ ip virtual-reassembly in
+ ip tcp adjust-mss 1432
+ duplex auto
+ speed auto
+ pppoe enable group global
+ pppoe-client dial-pool-number 1
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan2
+ description Blueprint Gaming/Mars
+ ip address 192.168.2.1 255.255.254.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan4
+ description Astra Network
+ ip address 192.168.4.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan5
+ description SG Gaming
+ ip address 192.168.5.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan6
+ description Project Coin
+ ip address 192.168.6.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan7
+ description Amatic
+ ip address 192.168.7.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan10
+ description FastEthernet0 - Camera / Legacy
+ ip address 192.168.98.1 255.255.255.0 secondary
+ ip address 192.168.1.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Vlan11
+ description FastEthernet1 - Gausselmann
+ ip address 10.135.43.1 255.255.255.0
+ ip access-group intFirewall in
+ ip nat inside
+ ip virtual-reassembly in
+!
+interface Dialer1
+ description DSL Connection
+ mtu 1492
+ ip address negotiated
+ ip access-group extFirewall in
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ ip nat outside
+ ip virtual-reassembly in
+ encapsulation ppp
+ ip tcp adjust-mss 1432
+ load-interval 30
+ dialer pool 1
+ dialer idle-timeout 0
+ dialer persistent
+ dialer-group 1
+ ppp authentication chap pap callin
+ ppp chap hostname 01252336688@talktalkbusiness.net
+ ppp chap password 7 12290404011C03162E
+ crypto map SophosUTM
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+!
+ip dns server
+ip nat pool GEWETE 192.168.2.50 192.168.2.50 netmask 255.255.255.0 type rotary
+ip nat pool ALARM 192.168.1.5 192.168.1.5 netmask 255.255.255.0 type rotary
+ip nat pool GEWETE2 192.168.2.51 192.168.2.51 netmask 255.255.255.0 type rotary
+ip nat inside source list global-nat-acl interface Dialer1 overload
+ip nat inside source static tcp 192.168.1.108 8030 interface Dialer1 8030
+ip nat inside source static udp 192.168.1.108 11161 interface Dialer1 11161
+ip nat inside source static tcp 192.168.1.109 9000 interface Dialer1 9000
+ip nat inside source static tcp 192.168.1.109 8083 interface Dialer1 8083
+ip nat inside source static tcp 192.168.1.109 5540 interface Dialer1 5540
+ip nat inside source static udp 192.168.1.109 10161 interface Dialer1 10161
+ip nat inside source static tcp 192.168.1.110 9010 interface Dialer1 9010
+ip nat inside source static tcp 192.168.1.110 9020 interface Dialer1 9020
+ip nat inside source static tcp 192.168.1.110 8000 interface Dialer1 8000
+ip nat inside source static tcp 192.168.1.110 8180 interface Dialer1 8180
+ip nat inside source static tcp 192.168.1.110 554 interface Dialer1 554
+ip nat inside source static tcp 192.168.1.111 9030 interface Dialer1 9030
+ip nat inside source static tcp 192.168.1.111 9040 interface Dialer1 9040
+ip nat inside source static tcp 192.168.1.111 8001 interface Dialer1 8001
+ip nat inside source static tcp 192.168.1.111 8181 interface Dialer1 8181
+ip nat inside source static tcp 192.168.1.111 1024 interface Dialer1 1024
+ip nat inside source static tcp 192.168.1.112 9050 interface Dialer1 9050
+ip nat inside source static tcp 192.168.1.112 9060 interface Dialer1 9060
+ip nat inside source static tcp 192.168.1.112 8002 interface Dialer1 8002
+ip nat inside source static tcp 192.168.1.112 8182 interface Dialer1 8182
+ip nat inside source static tcp 192.168.1.112 1025 interface Dialer1 1025
+ip nat inside source static tcp 10.135.43.240 443 interface Dialer1 2240
+ip nat inside source static tcp 10.135.43.241 443 interface Dialer1 2241
+ip nat inside source static tcp 10.135.43.242 443 interface Dialer1 2242
+ip nat inside source static tcp 10.135.43.243 443 interface Dialer1 2243
+ip nat inside source static tcp 10.135.43.244 443 interface Dialer1 2244
+ip nat inside source static tcp 192.168.2.200 22 interface Dialer1 8022
+ip nat inside source static tcp 192.168.2.200 5666 interface Dialer1 5666
+ip nat inside destination list 100 pool GEWETE
+ip nat inside destination list 102 pool GEWETE2
+ip nat inside destination list 110 pool ALARM
+ip route 0.0.0.0 0.0.0.0 Dialer1
+ip route 10.10.10.0 255.255.255.0 Dialer1
+ip route 10.133.1.0 255.255.255.0 Dialer1
+ip route 192.168.111.0 255.255.255.0 Dialer1
+!
+ip access-list extended extFirewall
+ permit tcp any any established
+ remark DNS
+ permit tcp host 8.8.8.8 eq domain any
+ permit udp host 8.8.8.8 eq domain any
+ permit tcp host 8.8.4.4 eq domain any
+ permit udp host 8.8.4.4 eq domain any
+ permit tcp host 62.24.128.17 eq domain any
+ permit udp host 62.24.128.17 eq domain any
+ permit tcp host 62.24.128.18 eq domain any
+ permit udp host 62.24.128.18 eq domain any
+ permit ip host 82.163.252.2 any
+ remark SWITCHES
+ permit tcp host 82.163.252.2 any eq 2240 2241 2242 2243 2244 2245 2246 2247 2251
+ permit udp host 82.163.252.2 any eq snmp
+ permit tcp host 82.163.252.2 any eq 22
+ permit icmp host 82.163.252.2 any echo
+ permit icmp host 85.95.126.82 any echo
+ permit icmp host 85.95.126.83 any echo
+ remark IPSEC-VPN
+ permit udp host 79.77.182.237 eq isakmp any
+ permit esp host 79.77.182.237 any
+ remark GEWETES
+ permit tcp 193.102.155.0 0.0.0.255 any range 51300 51306
+ permit tcp 193.102.155.0 0.0.0.255 any range 51400 51406
+ permit tcp 193.102.155.0 0.0.0.255 any range 51500 51506
+ permit tcp 193.102.155.0 0.0.0.255 any range 51600 51606
+ permit tcp 193.102.155.0 0.0.0.255 any range 51700 51706
+ permit tcp 193.102.155.0 0.0.0.255 any range 51800 51806
+ remark CAMERAS
+ permit tcp any any eq 9010 9020 9030 9040 9050 9060
+ permit tcp any any eq 9070 9080 9090 9100 9110 9120
+ permit tcp any any eq 8000 8080 554
+ permit tcp any any eq 8000 8180 554 8001 8181 1024 8002 8182 1025
+ remark STAFFGUARD
+ permit tcp any any eq 5540 9000 8083
+ permit udp any any eq 10161
+ remark BETMAXIM
+ permit tcp any any eq 49600
+ remark BIOREADER
+ permit tcp any any eq 1471 1480
+ remark ALARM
+ permit tcp any any range 18000 18049
+ remark TANNING
+ permit tcp any any eq 4222
+ remark PLAYSAFE
+ permit tcp any any eq 3051 6772 3050
+ permit tcp 193.102.155.0 0.0.0.255 any eq 5666 8022
+ permit udp object-group ASTRA-EXT-HOSTS any eq isakmp
+ permit udp any eq ntp 7351 any
+ permit udp object-group LEISURE-ELECTRONICS-HOSTS any
+ permit tcp any eq 7734 7752 any
+ permit udp object-group ASTRA-EXT-HOSTS eq isakmp any
+ permit udp object-group SG-VERACC-HOSTS any eq 4455
+ permit udp object-group SG-VERACC-HOSTS any eq ntp
+ permit tcp object-group SG-VERACC-HOSTS any
+ permit udp object-group SG-VERACC-HOSTS any
+ permit tcp object-group PROJECT-EXT-HOSTS any
+ deny   ip any any
+ip access-list extended global-nat-acl
+ deny   ip 10.135.43.0 0.0.0.255 192.168.1.0 0.0.0.255
+ deny   ip 192.168.1.0 0.0.0.255 10.135.43.0 0.0.0.255
+ deny   ip 192.168.2.0 0.0.0.255 host 172.25.20.176
+ deny   ip 10.135.43.0 0.0.0.255 10.10.10.0 0.0.0.255
+ deny   ip 10.135.43.0 0.0.0.255 192.168.111.0 0.0.0.255
+ deny   ip 10.135.43.0 0.0.0.255 10.133.1.0 0.0.0.255
+ permit ip any any
+ip access-list extended intFirewall
+ permit ip host 192.168.1.39 host 192.168.2.200
+ permit ip host 192.168.2.200 host 192.168.1.39
+ permit ip host 192.168.1.41 host 192.168.2.50
+ permit ip host 192.168.2.50 host 192.168.1.41
+ permit tcp any host 192.168.2.200 eq 8080 8900 443 873 8181 8183 32001
+ permit ip host 192.168.1.40 host 192.168.2.200
+ permit ip host 192.168.2.200 host 192.168.1.40
+ permit ip host 192.168.1.40 object-group LEISURE-ELECTRONICS-HOSTS
+ permit tcp host 192.168.2.200 eq 8080 8900 443 873 8181 8183 32001 any
+ permit ip 10.135.0.0 0.0.255.255 host 86.8.253.59
+ permit tcp 192.168.2.0 0.0.0.255 object-group BLUEPRINT-UPDATES eq ftp 443 www
+ permit udp any eq bootpc any eq bootps
+ permit udp 192.168.0.0 0.0.255.255 any eq domain
+ permit tcp any host 192.168.1.140 eq www 8080
+ permit tcp host 192.168.1.140 eq www 8080 any
+ permit ip host 192.168.1.11 host 192.168.2.50
+ permit ip host 192.168.2.50 host 192.168.1.11
+ permit tcp 192.168.7.0 0.0.0.255 host 80.120.10.68 eq 443
+ permit tcp 192.168.4.0 0.0.0.255 object-group ASTRA-EXT-HOSTS eq www 443 1723 1701 4500
+ permit udp 192.168.4.0 0.0.0.255 object-group ASTRA-EXT-HOSTS eq isakmp
+ permit ip 192.168.4.0 0.0.0.255 any
+ permit tcp 192.168.6.0 0.0.0.255 object-group PROJECT-EXT-HOSTS
+ permit tcp 192.168.6.0 0.0.0.255 object-group PROJECT-EXT-HOSTS eq ftp 3306 6000 6500 7000 7005 7350 8000 8500
+ permit icmp 192.168.6.0 0.0.0.255 object-group PROJECT-EXT-HOSTS
+ permit tcp 192.168.5.0 0.0.0.255 object-group SG-VERSRV-HOSTS eq 17301 17304 17305
+ permit tcp 192.168.5.0 0.0.0.255 object-group SG-VERACC-HOSTS eq 17301 17304 17305
+ permit udp 192.168.5.0 0.0.0.255 object-group SG-VERSRV-HOSTS eq 4454 4455 ntp
+ permit udp 192.168.5.0 0.0.0.255 object-group SG-VERACC-HOSTS eq 4454 4455 ntp
+ permit tcp 192.168.5.0 0.0.0.255 object-group SG-VERSRV-HOSTS eq 4500
+ permit udp 192.168.5.0 0.0.0.255 object-group SG-VERSRV-HOSTS eq isakmp
+ permit esp 192.168.5.0 0.0.0.255 object-group SG-VERSRV-HOSTS
+ permit ip 192.168.5.0 0.0.0.255 object-group SG-VERACC-HOSTS
+ permit tcp 192.168.5.0 0.0.0.255 object-group SG-VBET-HOSTS eq 1643 443 1100 1101 4448 9999 2222 3333 8888
+ permit tcp 192.168.5.0 0.0.0.255 object-group SG-VBET-HOSTS eq 9911 7226 3434
+ permit tcp host 192.168.2.200 object-group MARS-EXT-HOSTS eq ftp 443 www
+ permit tcp host 192.168.2.200 eq 5666 22 any
+ permit tcp host 192.168.2.200 any eq 5938
+ permit tcp object-group GEWETE-HOSTS host 217.7.207.236 eq 50000 52001 8081
+ permit udp object-group GEWETE-HOSTS host 217.7.207.236 range 50001 50007
+ permit tcp object-group GEWETE-HOSTS host 212.227.15.183 eq 587
+ permit tcp object-group GEWETE-HOSTS host 104.199.96.85 eq 587
+ permit tcp object-group GEWETE-HOSTS host 81.169.175.20 range 52202 52300
+ permit tcp object-group GEWETE-HOSTS any eq 8080 23896 443 19000
+ permit udp object-group GEWETE-HOSTS any eq 19000
+ permit tcp object-group GEWETE-HOSTS range 51300 51306 any
+ permit tcp object-group GEWETE-HOSTS range 51400 51406 any
+ deny   ip 192.168.1.0 0.0.0.255 object-group VENDOR-NETS
+ deny   ip object-group VENDOR-NETS 192.168.1.0 0.0.0.255
+ permit ip 192.168.1.0 0.0.0.255 any
+ permit tcp any object-group TEST-WEB eq www 443 5060 8080
+ permit udp any any eq ntp
+ permit tcp any host 8.8.8.8 eq domain
+ deny   ip 10.135.0.0 0.0.255.255 object-group VENDOR-NETS
+ deny   ip object-group VENDOR-NETS 10.135.0.0 0.0.0.255
+ permit ip 10.135.0.0 0.0.255.255 any
+ deny   ip any any
+!
+ip radius source-interface Vlan11 
+dialer-list 1 protocol ip permit
+ipv6 ioam timestamp
+!
+snmp-server community monitor RO
+access-list 100 permit tcp any any range 51300 51306
+access-list 101 permit ip 10.135.43.0 0.0.0.255 10.10.10.0 0.0.0.255
+access-list 101 permit ip 10.135.43.0 0.0.0.255 192.168.111.0 0.0.0.255
+access-list 101 permit ip 10.135.43.0 0.0.0.255 10.133.1.0 0.0.0.255
+access-list 101 permit ip 10.133.1.0 0.0.0.255 10.135.43.0 0.0.0.255
+access-list 101 permit ip 10.10.10.0 0.0.0.255 10.135.43.0 0.0.0.255
+access-list 101 permit ip 192.168.111.0 0.0.0.255 10.135.43.0 0.0.0.255
+access-list 102 permit tcp any any range 51400 51406
+access-list 110 permit tcp any any range 18000 18049
+!
+radius server PRAESEPEDC001
+ address ipv4 192.168.111.41 auth-port 1645 acct-port 1646
+ key 7 15384E061E060600013C36354B36470B50
+!
+!
+!
+control-plane
+!
+!
+!
+mgcp behavior rsip-range tgcp-only
+mgcp behavior comedia-role none
+mgcp behavior comedia-check-media-src disable
+mgcp behavior comedia-sdp-force disable
+!
+mgcp profile default
+!
+!
+!
+!
+!
+banner motd 
+ Config Version 4.11 
+!
+line con 0
+ no modem enable
+line aux 0
+line vty 0 4
+ exec-timeout 100 0
+ authorization exec PRAESEPE-AD
+ login authentication PRAESEPE-AD
+ transport input ssh
+!
+scheduler allocate 20000 1000
+!
+!
+!
+!
+!
+!
+!
+end
